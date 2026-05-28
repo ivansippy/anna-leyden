@@ -15,13 +15,7 @@
 
 import "./site.css";
 import Image from "next/image";
-import {
-  Fragment,
-  useEffect,
-  type FC,
-  type FormEvent,
-  type ReactNode,
-} from "react";
+import { Fragment, useEffect, type FC, type ReactNode } from "react";
 
 export type Palette = "sage" | "forest" | "clinic" | "mono";
 
@@ -285,10 +279,10 @@ const Nav: FC = () => (
         <span className="brand-tag">Educational Consultant</span>
       </a>
       <div className="nav-links">
+        <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#pricing">Pricing</a>
         <a href="#process">Process</a>
-        <a href="#about">About</a>
         <a href="#faq">FAQ</a>
       </div>
       <a className="btn btn-primary" href="#contact">
@@ -321,8 +315,7 @@ const Hero: FC = () => (
           </h1>
           <p className="lede">
             For families and schools across the Four Corners — academic and
-            cognitive testing, interpreted together, with a clear plan you can
-            take back to your district.
+            cognitive testing, interpreted together, providing you with results you can use to inform your child’s best educational path forward.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href="#contact">
@@ -372,12 +365,52 @@ const ServiceCard: FC<ServiceCardProps> = ({
   </article>
 );
 
+const About: FC = () => (
+  <section id="about">
+    <div className="container">
+      <div className="about-grid">
+        <div className="about-img">
+          <Image
+            src="/assets/Anna, Birch, Robin-5859.avif"
+            alt="Photo of Anna Layden"
+            width={400}
+            height={500}
+            style={{ objectFit: "cover", width: "100%", height: "auto" , borderRadius: 8}}
+          />
+        </div>
+        <div className="about-body">
+          <h2 style={{ marginTop: 14, marginBottom: 28 }}>
+            More about Anna.
+          </h2>
+          <p>
+            Anna Layden has been an educator in Durango, Colorado since 2005 —
+            teaching in Montessori elementary, project-based middle, and
+            traditional high school classrooms.
+          </p>
+          <p>
+            She's worked with students as a classroom teacher, a special
+            education teacher, a social worker, and an academic diagnostician.
+            She's worked alongside countless families as an educational advocate
+            and ally.
+          </p>
+          <p>
+            Since 2020 she has been providing psychoeducational evaluations
+            across the Four Corners area, for students ages six through
+            twenty-four. As an educator invested in equity, Anna partners with
+            community organizations to provide need-based scholarships.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 const Services: FC = () => (
   <section className="services" id="services">
     <div className="container">
       <div className="section-head">
         <Eyebrow>What we offer</Eyebrow>
-        <h2>Two ways we work with families.</h2>
+        <h2>Two ways we work with families:</h2>
         <p className="lede">
           Most families start with a consultation. From there we recommend
           either a full independent evaluation or ongoing educational consulting
@@ -399,7 +432,7 @@ const Pricing: FC = () => (
     <div className="container">
       <div className="section-head">
         <Eyebrow>Pricing</Eyebrow>
-        <h2>What the full evaluation includes.</h2>
+        <h2>What the full evaluation includes</h2>
         <p className="lede">
           The follow-up meeting and comprehensive
           report are always included in the package price.
@@ -451,7 +484,7 @@ const Process: FC = () => (
     <div className="container">
       <div className="section-head" style={{ marginBottom: 40 }}>
         <Eyebrow>The process</Eyebrow>
-        <h2>What to expect from start to finish.</h2>
+        <h2>What to expect from start to finish:</h2>
       </div>
 
       <div className="process-grid">
@@ -465,46 +498,6 @@ const Process: FC = () => (
             <div className="step-meta">{step.meta}</div>
           </div>
         ))}
-      </div>
-    </div>
-  </section>
-);
-
-const About: FC = () => (
-  <section id="about">
-    <div className="container">
-      <div className="about-grid">
-        <div className="about-img">
-          <Image
-            src="/assets/Anna, Birch, Robin-5859.avif"
-            alt="Photo of Anna Layden"
-            width={400}
-            height={500}
-            style={{ objectFit: "cover", width: "100%", height: "auto" , borderRadius: 8}}
-          />
-        </div>
-        <div className="about-body">
-          <h2 style={{ marginTop: 14, marginBottom: 28 }}>
-            A bit more about Anna.
-          </h2>
-          <p>
-            Anna Layden has been an educator in Durango, Colorado since 2005 —
-            teaching in Montessori elementary, project-based middle, and
-            traditional high school classrooms.
-          </p>
-          <p>
-            She's worked with students as a classroom teacher, a special
-            education teacher, a social worker, and an academic diagnostician.
-            She's worked alongside countless families as an educational advocate
-            and ally.
-          </p>
-          <p>
-            Since 2020 she has been providing psychoeducational evaluations
-            across the Four Corners area, for students ages six through
-            twenty-four. As an educator invested in equity, Anna partners with
-            community organizations to provide need-based scholarships.
-          </p>
-        </div>
       </div>
     </div>
   </section>
@@ -561,7 +554,7 @@ const Faq: FC = () => (
     <div className="container-narrow">
       <div className="section-head" style={{ marginBottom: 32 }}>
         <Eyebrow>Common questions</Eyebrow>
-        <h2>What parents and schools ask.</h2>
+        <h2>What parents and schools ask:</h2>
       </div>
 
       <div className="faq-list">
@@ -576,134 +569,58 @@ const Faq: FC = () => (
   </section>
 );
 
-const Contact: FC<{
-  onSubmit?: (data: ConsultationRequest) => void | Promise<void>;
-}> = ({ onSubmit }) => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    const payload: ConsultationRequest = {
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      grade: String(data.get("grade") ?? ""),
-      message: String(data.get("message") ?? ""),
-    };
-    if (onSubmit) void onSubmit(payload);
-    else
-      window.location.href = `mailto:aelayden@gmail.com?subject=${encodeURIComponent(
-        "Consultation request — " + payload.name,
-      )}&body=${encodeURIComponent(
-        `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone}\nChild's age & grade: ${payload.grade}\n\n${payload.message}`,
-      )}`;
-  };
-
-  return (
-    <section id="contact" className="contact">
-      <div className="container">
-        <div style={{ maxWidth: 720 }}>
-          <Eyebrow>Get in touch</Eyebrow>
-          <h2 style={{ marginTop: 14 }}>
-            Let's start with a conversation about your child.
-          </h2>
-          <p
-            className="lede"
-            style={{
-              color: "color-mix(in oklch, var(--on-deep) 75%, transparent)",
-              marginTop: 18,
-            }}
-          >
-            Send a note below or reach out directly. Initial consultations are
-            $125/hr with no commitment to move forward.
-          </p>
-        </div>
-
-        <div className="contact-grid">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="field-row">
-              <div className="field">
-                <label htmlFor="name">Your name</label>
-                <input id="name" name="name" type="text" required />
-              </div>
-              <div className="field">
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="email" required />
-              </div>
-            </div>
-
-            <div className="field-row">
-              <div className="field">
-                <label htmlFor="phone">Phone (optional)</label>
-                <input id="phone" name="phone" type="tel" />
-              </div>
-              <div className="field">
-                <label htmlFor="grade">Child's age &amp; grade</label>
-                <input
-                  id="grade"
-                  name="grade"
-                  type="text"
-                  placeholder="e.g. 9 / 3rd grade"
-                />
-              </div>
-            </div>
-
-            <div className="field">
-              <label htmlFor="message">What you're noticing</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="A few sentences about what brought you here…"
-              />
-            </div>
-
-            <button
-              className="btn btn-primary btn-lg contact-submit"
-              type="submit"
-            >
-              Request a consultation
-              <span className="arrow">→</span>
-            </button>
-          </form>
-
-          <aside className="direct">
-            <h4>Or reach out directly</h4>
-            <dl>
-              <div>
-                <dt>Email</dt>
-                <dd>
-                  <a href="mailto:aelayden@gmail.com">aelayden@gmail.com</a>
-                </dd>
-              </div>
-              <div>
-                <dt>Phone</dt>
-                <dd>
-                  <a href="tel:+19707693006">970-769-3006</a>
-                </dd>
-              </div>
-              <div>
-                <dt>Office</dt>
-                <dd>
-                  1309 E 3rd Ave., #27
-                  <br />
-                  Durango, CO 81301
-                </dd>
-              </div>
-              <div>
-                <dt>Serving</dt>
-                <dd>
-                  Four Corners region
-                  <br />
-                  Colorado · New Mexico · Arizona · Utah
-                </dd>
-              </div>
-            </dl>
-          </aside>
-        </div>
+const Contact: FC = () => (
+  <section id="contact" className="contact">
+    <div className="container">
+      <div style={{ maxWidth: 720 }}>
+        <Eyebrow>Get in touch</Eyebrow>
+        <h2 style={{ marginTop: 14 }}>
+          Let's start with a conversation about your child.
+        </h2>
+        <p
+          className="lede"
+          style={{
+            color: "color-mix(in oklch, var(--on-deep) 75%, transparent)",
+            marginTop: 18,
+          }}
+        >
+          Initial consultations are $125/hr with no commitment to move forward.
+        </p>
       </div>
-    </section>
-  );
-};
+
+      <dl className="direct contact-details">
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a href="mailto:aelayden@gmail.com">aelayden@gmail.com</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Phone</dt>
+          <dd>
+            <a href="tel:+19707693006">970-769-3006</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Office</dt>
+          <dd>
+            1309 E 3rd Ave., #27
+            <br />
+            Durango, CO 81301
+          </dd>
+        </div>
+        <div>
+          <dt>Serving</dt>
+          <dd>
+            Four Corners region
+            <br />
+            Colorado · New Mexico · Arizona · Utah
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+);
 
 const Footer: FC = () => (
   <footer className="footer">
@@ -718,10 +635,7 @@ const Footer: FC = () => (
 
 /* ───── Root component ─────────────────────────────────────── */
 
-const AnnaLaydenSite: FC<AnnaLaydenSiteProps> = ({
-  palette = "clinic",
-  onConsultationRequest,
-}) => {
+const AnnaLaydenSite: FC<AnnaLaydenSiteProps> = ({ palette = "clinic" }) => {
   useEffect(() => {
     const html = document.documentElement;
     const previous = html.getAttribute("data-palette");
@@ -736,14 +650,14 @@ const AnnaLaydenSite: FC<AnnaLaydenSiteProps> = ({
     <>
       <Nav />
       <Hero />
-      <Services />
-      <Pricing />
-      <Process />
       <About />
       <Credentials />
+      <Process />
+      <Services />
+      <Pricing />
       <Testimonials />
       <Faq />
-      <Contact onSubmit={onConsultationRequest} />
+      <Contact />
       <Footer />
     </>
   );

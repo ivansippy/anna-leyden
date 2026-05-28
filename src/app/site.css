@@ -821,6 +821,13 @@ details.faq summary:hover { background: var(--bg-alt); }
 
 .contact-submit { align-self: flex-start; }
 
+.contact-details {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 220px));
+  gap: 32px 64px;
+  margin-top: 48px;
+}
+
 .direct h4 {
   color: var(--on-deep);
   font-size: 0.88rem;
