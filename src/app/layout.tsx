@@ -13,9 +13,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Anna Layden, MS — Educational Consulting & Psychoeducational Evaluations",
+  title: {
+    default: "Anna Layden, MS — Educational Consulting & Psychoeducational Evaluations",
+    template: "%s | Anna Layden, MS",
+  },
   description:
     "Independent psychoeducational evaluations and educational consulting for families across the Four Corners. 22 years of K–12 experience in Durango, Colorado.",
+  keywords: [
+    "psychoeducational evaluation",
+    "educational consulting",
+    "learning disabilities",
+    "IEP",
+    "504 plan",
+    "ADHD evaluation",
+    "Durango Colorado",
+    "Four Corners",
+    "independent educational evaluation",
+    "special education",
+    "Anna Layden",
+  ],
+  authors: [{ name: "Anna Layden, MS" }],
+  creator: "Anna Layden",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    title: "Anna Layden, MS — Educational Consulting & Psychoeducational Evaluations",
+    description:
+      "Independent psychoeducational evaluations and educational consulting for families across the Four Corners. 22 years of K–12 experience in Durango, Colorado.",
+    siteName: "Anna Layden Educational Consulting",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Anna Layden, MS — Educational Consulting & Psychoeducational Evaluations",
+    description:
+      "Independent psychoeducational evaluations and educational consulting for families across the Four Corners. 22 years of K–12 experience in Durango, Colorado.",
+  },
 };
 
 export default function RootLayout({
