@@ -82,7 +82,7 @@ interface FaqItem {
 const SERVICES: ServiceCardProps[] = [
   {
     label: "Service 01",
-    title: "Psychoeducational Evaluation",
+    title: "Educational Evaluation",
     description:
       "In partnership with a licensed school psychologist, we evaluate academic, cognitive, and social-emotional areas. Diagnoses lead to IEP or 504 plan recommendations, accommodations, and modifications you can take to your school.",
     price: "from $2,300",
